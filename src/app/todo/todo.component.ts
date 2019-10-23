@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from './shared/todo.service'
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-todo',
@@ -20,11 +21,14 @@ export class TodoComponent implements OnInit
         this.toDoListArray = [];
         item.forEach(element=>
           {
-            var x = element.payload.toJSON;
+            console.log("Element: "+  JSON.stringify( element ) );
+            var x = element.payload.toJSON();
+            console.log("Payload: "+  JSON.stringify(element.payload) );
             x["$key"] = element.key;
             this.toDoListArray.push(x);
           }); 
 
+          console.log("Array: "+  JSON.stringify(this.toDoListArray) );
 
           this.toDoListArray.sort( //function(a, b)
           (a, b)=> 
