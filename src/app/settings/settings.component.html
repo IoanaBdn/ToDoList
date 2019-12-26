@@ -1,0 +1,28 @@
+<script>
+$(document).on('click', '.browse', function(){
+  var file = $(this).parent().parent().parent().find('.file');
+  file.trigger('click');
+});
+$(document).on('change', '.file', function(){
+  $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+});
+</script>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Settings</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Background</h6>
+        <p class="card-text">
+        
+        </p>
+   
+
+        <div class="form-group">
+            <input type="file" (change)="onFileSelected($event)" accept=".png,.jpg">
+        </div>
+
+        <button type="button" class="btn btn-dark" (click)="onUpload()">Upload</button>
+
+
+    </div>
+</div>
